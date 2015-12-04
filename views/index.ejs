@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Epic Button</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+	<script type="text/javascript" src='/socket.io/socket.io.js'></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var socket = io.connect();
+
+			$('#epic').click(function(){
+				socket.emit('clicking_epic')
+			})
+
+			socket.on('updated_count', function(data){
+				$('h1').html('Now you have clicked the button ' + data + ' time(s)!')
+
+			})
+
+
+			$('#reset').click(function(){
+				socket.emit('clicking_reset')
+			})
+
+			socket.on('reset_count', function(data){
+				$('h1').html('The counter has been reset to ' +data + '!')
+			})
+
+		})
+
+	</script>
+</head>
+<body>
+	<h1>The button click count is now at 0!</h1>
+	<p>Push the button to update the count!</p>
+	<button id="epic">Push the epic button!</button><br>
+	<button id="reset">Reset Count</button>
+</body>
+</html>

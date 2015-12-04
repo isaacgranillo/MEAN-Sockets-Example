@@ -1,0 +1,17 @@
+#epic{
+	background-color: blue;
+	width: 200px;
+	height: 100px;
+	color: white;
+	font-size: 25px;
+	margin-bottom: 10px;
+}
+
+#reset{
+	background-color: red;
+	color: white;
+}
+
+p{
+	font-size: 30px;
+}
